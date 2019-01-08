@@ -7,6 +7,52 @@
     <title>Document</title>
 </head>
 <body>
-    hello world
+
+        <style>
+                h1 {
+                    font-size: 90pt;
+                }
+
+        </style>
+
+    <script>
+        
+
+        const couleur = ['red', 'blue', 'green', 'yellow'];
+        let i = 0;
+        let stop = true;
+        
+        
+        setInterval(function(){
+            if(!stop)document.body.style.backgroundColor = couleur[i++%couleur.length];
+        }, 5)  
+
+
+        function change(){
+            stop = !stop;
+
+            if(!stop){
+                document.getElementById("titre").innerHTML = "U R BLIND !!"
+                image_mystere();
+            } else {
+                document.getElementById("titre").innerHTML = ""
+            }
+
+        }  
+            /*
+            while (true) {
+
+            document.body.style.backgroundColor = "red";
+            document.body.style.backgroundColor = "blue";
+            document.body.style.backgroundColor = "green";
+            document.body.style.backgroundColor = "yellow";
+        }*/
+
+    </script>
+
+    <h1 id="titre"></h1>
+
+    <button onclick="change()">start/stop</button> 
+
 </body>
 </html>
