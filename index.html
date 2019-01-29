@@ -13,6 +13,26 @@
                     font-size: 90pt;
                 }
 
+                .btn {
+                    
+                }
+
+                .invisible {
+
+
+                    width: 150px;
+                    height: 50px;
+                    left: 20vw;
+                    top: 50vh;
+
+                    position: fixed;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 10px;
+                    background-color: black;
+                }
+
         </style>
 
     <script>
@@ -22,37 +42,47 @@
         let i = 0;
         let stop = true;
         
+        let intervale = null;
         
-        setInterval(function(){
-            if(!stop)document.body.style.backgroundColor = couleur[i++%couleur.length];
-        }, 5)  
+        function strobos(){
+
+            intervale = setInterval(function(){
+                document.body.style.backgroundColor = couleur[i++%couleur.length];
+            }, 25);
+
+        }
+        
+         
 
 
         function change(){
             stop = !stop;
 
-            if(!stop){
-                document.getElementById("titre").innerHTML = "U R BLIND !!"
-                image_mystere();
+         if(!stop){
+
+                let monBouton = document.getElementById('cont');
+
+                monBouton.style.top = (Math.random() * (95 - 5) + 5)+"vh";
+                monBouton.style.left = (Math.random() * (95 - 5) + 5)+"vw";
+
+
+                //document.getElementById("titre").innerHTML = "U R BLIND !!";
+                strobos();
             } else {
-                document.getElementById("titre").innerHTML = ""
+                clearInterval(intervale);
+                //document.getElementById("titre").innerHTML = "";
             }
 
         }  
-            /*
-            while (true) {
-
-            document.body.style.backgroundColor = "red";
-            document.body.style.backgroundColor = "blue";
-            document.body.style.backgroundColor = "green";
-            document.body.style.backgroundColor = "yellow";
-        }*/
 
     </script>
 
-    <h1 id="titre"></h1>
+    <!--<h1 id="titre"></h1>-->
 
-    <button onclick="change()">start/stop</button> 
+
+    <div id="cont" class="invisible">
+        <button id="bouton" class="btn" onclick="change()">start/stop</button> 
+    </div>
 
 </body>
 </html>
