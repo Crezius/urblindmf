@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,29 +9,24 @@
 <body>
 
         <style>
-                h1 {
-                    font-size: 90pt;
-                }
 
-                .btn {
-                    
-                }
+            .btn {
+                width: 100px;
+                height: 30px;  
+            }
+            
+            .invisible {
 
-                .invisible {
-
-
-                    width: 150px;
-                    height: 50px;
-                    left: 20vw;
-                    top: 50vh;
-
-                    position: fixed;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    padding: 10px;
-                    background-color: black;
-                }
+                width: 200px;
+                height: 80px;
+                left: 20vw;
+                top: 50vh;
+                position: fixed;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 10px;
+            }
 
         </style>
 
@@ -41,14 +36,13 @@
         const couleur = ['red', 'blue', 'green', 'yellow'];
         let i = 0;
         let stop = true;
-        
         let intervale = null;
         
         function strobos(){
 
             intervale = setInterval(function(){
                 document.body.style.backgroundColor = couleur[i++%couleur.length];
-            }, 25);
+            }, 50);
 
         }
         
@@ -58,29 +52,31 @@
         function change(){
             stop = !stop;
 
-         if(!stop){
-
+                if(!stop){
+                    strobos();
+                } else {
+                    clearInterval(intervale);
+                    //document.getElementById("titre").innerHTML = "";
+                }
+            
+        
+        }
+        
+        function transposition(){
+            if(!stop){
                 let monBouton = document.getElementById('cont');
-
                 monBouton.style.top = (Math.random() * (95 - 5) + 5)+"vh";
                 monBouton.style.left = (Math.random() * (95 - 5) + 5)+"vw";
-
-
-                //document.getElementById("titre").innerHTML = "U R BLIND !!";
-                strobos();
-            } else {
-                clearInterval(intervale);
-                //document.getElementById("titre").innerHTML = "";
             }
-
-        }  
+        }
+                           
 
     </script>
 
     <!--<h1 id="titre"></h1>-->
 
 
-    <div id="cont" class="invisible">
+    <div onmouseover="transposition()" id="cont" class="invisible">
         <button id="bouton" class="btn" onclick="change()">start/stop</button> 
     </div>
 
